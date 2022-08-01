@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
+<mapper namespace="product">
+	<insert id="insertProduct">
+		insert into product(pid, pname , pprice, pdcprice,pimg, pcolor, psize, pamount, dc)
+		values (#{pid },#{pname },#{pprice },#{pdcprice },#{pimg },#{pcolor },#{psize },#{pamount },#{dc })
+	</insert>
+	<select id="productList" resultType="com.shop.dto.ProductDTO">
+		select * from product where pid like CONCAT(#{pid },'%')
+	</select>
+	<update id="updateProduct">
+		update product set pname=#{pname }, pprice=#{pprice }, pdcprice=#{pdcprice },
+		pimg=#{pimg },pcolor=#{pcolor }, psize=#{psize }, pamount=#{pamount }, best=#{best }, premium=#{premium }, dc=#{dc } where pid=#{pid }
+	</update>
+	<select id="productRead" resultType="com.shop.dto.ProductDTO">
+		select * from product where pid = #{pid }
+	</select>
+	<delete id="deleteProduct">
+		delete from product where pid = #{pid }
+	</delete>
+	<update id="updateamount">
+		update product set pamount=pamount-#{amount } where pid=#{pid }
+	</update>
+	<update id="updatebest">
+		update product set best=best+#{amount } where pid = #{pid }
+	</update>
+	<select id="newproduct" resultType="com.shop.dto.ProductDTO">
+		select * from product order by pregdate desc limit 8
+	</select>
+	<select id="premiumList" resultType="com.shop.dto.ProductDTO">
+		select * from product  where premium=1 order by best desc limit 3;
+	</select>
+	<select id="denimlist" resultType="com.shop.dto.ProductDTO">
+		select * from product where pid like CONCAT(12,'%') or pid like CONCAT(10,'%') order by best desc limit 3;
+	</select>
+	<select id="wovenlist" resultType="com.shop.dto.ProductDTO">
+		select * from product  where premium=2 order by best desc limit 3;
+	</select>
+	<select id="acclist" resultType="com.shop.dto.ProductDTO">
+		select * from product where pid like CONCAT(42,'%') order by best desc limit 3;
+	</select>
+</mapper>

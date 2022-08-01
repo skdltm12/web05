@@ -1,0 +1,84 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<c:set var="path1" value="${pageContext.request.contextPath }" />
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="../resources/css/style.css">
+		 <script src="https://code.jquery.com/jquery-latest.js"></script>		
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Noto+Sans+KR:wght@300;400;500;700;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">	
+<meta charset="UTF-8">
+	<title>즐거운 온라인 쇼핑공간에 오신 것을 환영합니다!</title>	
+	<link rel="icon" href="../resources/img/favicon.ico" type="image/x-icon">
+<script src="https://code.jquery.com/jquery-latest.js" crossorigin="anonymous"></script>
+<script src="../ckeditor/ckeditor.js"></script>
+
+</head>
+<body>
+	<c:import url="../inc/header.jsp" />
+		<div id="content">
+			<div class="content_wrap">
+					<form action="${path1 }/board/update.do" method="post">
+						<table class="table">
+							<tbody>
+								<tr>
+									<th><label for="title">글 번호</label></th>
+									<td><input type="text" name="bno" id="bno" size="10" class="single100" value="${boardEdit.bno }" required></td>
+								</tr>
+								<tr>
+									<th><label for="title">제목</label></th>
+									<td><input type="text" name="btitle" id="title" size="100" class="single100" value="${boardEdit.btitle }" required></td>
+								</tr>
+								<tr>
+									<th><label for="exampleTextarea1" class="form-label">글 내용</label></th>
+									<td><textarea class="form-control" name="bcontent" id="ckeditor" rows="6">${boardEdit.bcontent }</textarea></td>
+								</tr>
+								<tr>
+									<th><label for="nickname">작성자</label></th>
+									<td><input type="text" name="bwriter" id="nickname" size="40" class="single40" value="admin" readonly></td>
+								</tr>
+								<tr>
+									<td colspan="2">
+										<input type="submit" class="btn btn-primary" value="글 등록">
+										<input type="reset" class="btn btn-primary" value="취소">
+									</td>
+								</tr>	
+							</tbody>
+						</table>
+					</form>	
+					<script>
+					$(function(){
+						CKEDITOR.replace('ckeditor', {width:"100%", height:"400px", filebrowserUploadUrl:"fileupload.do"});
+					});
+					</script>
+				</div>
+					                <script>
+                    $(window).scroll(function() {  
+                      if($(this).scrollTop() > 10) {
+                        $("#header_wrap").css('padding-top','0')
+                          $("#mainmenu1,#mainmenu2,#mainmenu3,#mainmenu4,#mainmenu5,#mainmenu6").css('color','#333');             
+                        $(".mypage").css({"background":"url(../resources/img/my_bk.svg"}); 			
+                        $(".basket").css({"background":"url(../resources/img/cart_bk.svg", 'background-repeat' : 'no-repeat'});			
+                        $(".search").css({"background":"url(../resources/img/sch_bk.svg"}); 			
+                        $(".logo").css({"background":"url(../resources/img/logo.png"});
+                          $(".lg_line1,.lg_line2,.lg_line3").css('background-color','black');
+                          $(".background").css('opacity','1');
+                          $(".background").css('height','73px');
+                          $(".lb_a").css({'color':'#333'});
+                          $(".lb_a").css({'font-weight':'500'});
+                          $(".gnb_bar").css('background-color','#999')
+                      }else{
+                        $("#header_wrap").css('padding-top','16px')
+                        $(".background").css('opacity','0');
+                          $(".background").css('height','90px');   
+                      }});                       
+                    	   
+                    	   
+                       
+                    </script>
+			</div>
+	<c:import url="../inc/footer.jsp" />
+</body>
+</html>

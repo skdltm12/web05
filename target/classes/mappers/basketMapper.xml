@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
+<mapper namespace="basket">
+	<insert id="insertbasket">
+		insert into basket(bsid ,bsuid, bsname, bsprice,bsdcprice,bsimg, bscolor, bssize, bsamount)
+		values (#{bsid },#{bsuid },#{bsname },#{bsprice },#{bsdcprice },#{bsimg },#{bscolor },#{bssize },#{bsamount })
+	</insert>
+	<insert id="insertbasketData">
+		insert into basketdata(bsid ,bsuid, bsname, bsprice,bsdcprice,bsimg, bscolor, bssize, bsamount)
+		values (#{bsid },#{bsuid },#{bsname },#{bsprice },#{bsdcprice },#{bsimg },#{bscolor },#{bssize },#{bsamount })
+	</insert>
+	<select id="basketList" resultType="com.shop.dto.BasketDTO">
+		select * from basket where bsuid=#{bsuid }
+	</select>
+	<delete id="deleteBasket">
+		delete from basket where bsnum = #{bsnum }
+	</delete>
+	<delete id="deleteBasketData">
+		delete from basketData where bsnum = #{bsnum }
+	</delete>
+	<update id="update">
+		update basket set bsamount=#{bsamount } where bsnum = #{bsnum }
+	</update>
+	<update id="updatedata">
+		update basketdata set bsamount=#{bsamount } where bsnum = #{bsnum }
+	</update>
+</mapper>

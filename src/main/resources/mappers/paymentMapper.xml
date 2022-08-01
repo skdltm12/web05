@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
+<mapper namespace="payment">
+	<select id="adminPaymentList" resultType="com.shop.dto.PaymentDTO">
+		select * from payment
+	</select>
+	<select id="paymentList" resultType="com.shop.dto.PaymentDTO">
+		select * from payment where userid=#{userid }
+	</select>
+	<insert id="addpayment">
+		insert into payment(paytype, payno, payplace, money, pid, amount, userid, rname, tel, addr1, addr2, postcode, memo, bscnt) values (#{paytype },#{payno },#{payplace },#{money },#{pid },#{amount },#{userid },#{rname },#{tel },#{addr1 },#{addr2 }
+		,#{postcode },#{memo },#{bscnt })
+	</insert>
+	<delete id="deletebasket">
+		delete from basket where bsuid = #{userid } and bsid = #{pid } 
+	</delete>
+	<update id="updatePayment">
+		update payment set tel=#{tel },addr1=#{addr1 }, addr2=#{addr2 }, postcode=#{postcode }, transno=#{transno }, transco=#{transco },
+		rstatus=#{rstatus }, rdate=#{rdate }, memo=#{memo } where ono = #{ono }
+	</update>
+	<delete id="paymentDelete">
+		delete from payment where ono=#{ono }
+	</delete>
+	<update id="updateproduct">
+		update product set pamount = pamount-#{amount } where pid=#{pid }
+	</update>
+	<delete id="basketclean">
+		delete from basket where bsuid=#{pid1 }
+	</delete>
+	<select id="basketDataList" resultType="com.shop.dto.BasketDTO">
+		select * from basketData where bsuid=#{userid } limit #{searchkey1 },#{bscnt }
+	</select>
+</mapper>
