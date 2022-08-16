@@ -1,11 +1,10 @@
 create database shop;
+create database gnu5;
 commit;
 use shop;
 select * from member;
 select * from member order by id desc;
 select * from product where p_id like CONCAT(12,'%') or p_id like CONCAT(10,'%') order by best desc limit 3;
-
-
 
 select * from basketdata;
 select * from product;

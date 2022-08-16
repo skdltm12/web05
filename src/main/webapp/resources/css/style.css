@@ -185,7 +185,7 @@
         
         .tb .td3 {width:110px}
         .product_wrap { clear: both; margin: 0 auto; width: 1400px; margin-top: 60px;}
-        .product_imgbox {float:left; width: 615px; padding-right: 50px;}
+        .product_imgbox {float:left; width: 615px; padding-right: 50px; padding-bottom: 80px;}
         .product_infobox {float:left; width: 615px;}
 
         .tb4 {font-family: 'Roboto','Noto Sans KR',sans-serif;letter-spacing: -.4px; padding:15px; font-size: 14px; width: 100%;border-collapse: collapse; text-align: left;}

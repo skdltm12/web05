@@ -63,7 +63,7 @@
                             <li><a href="${path1 }/product/list.do?pid=30">DENIM</a></li>							
                         </ul>		
                     </li>
-                    <li><a href="${path1 }/product/list.do?p_id=42" id="mainmenu5" class="mainmenu">ACC</a></li>
+                    <li><a href="${path1 }/product/list.do?pid=42" id="mainmenu5" class="mainmenu">ACC</a></li>
                     <li><a href="" id="mainmenu6" class="mainmenu">SALE</a>
                         <ul class="sub_ul">
                             <li><a href="${path1 }/product/list.do?pid=32">DENIM-MEN</a></li>
